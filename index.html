@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Pessoas</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@500;700&family=JetBrains+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header class="topo">
+        <div class="topo__marca">
+            <span class="topo__selo">CP</span>
+            <div>
+                <h1>Cadastro de Pessoas</h1>
+                <p>Registro central de dados cadastrais</p>
+            </div>
+        </div>
+        <div class="topo__contador">
+            <span id="totalRegistros">0</span>
+            <small>fichas ativas</small>
+        </div>
+    </header>
+
+    <main class="conteudo">
+        <section class="barra-acoes">
+            <div class="busca">
+                <input type="text" id="campoBusca" placeholder="Buscar por nome, CPF ou e-mail">
+            </div>
+            <button class="botao botao--primario" id="btnNovaFicha">+ Nova fichar</button>
+        </section>
+
+        <div id="feedback" class="feedback" hidden></div>
+
+        <section class="tabela-wrap">
+            <table class="tabela-fichas">
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>CPF</th>
+                        <th>E-mail</th>
+                        <th>Telefone</th>
+                        <th>Nascimento</th>
+                        <th class="col-acoes">Ações</th>
+                    </tr>
+                </thead>
+                <tbody id="corpoTabela">
+                    <tr class="linha-vazia">
+                        <td colspan="6">Carregando registros...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <!-- Modal de cadastro/edição -->
+    <div class="ficha-overlay" id="fichaOverlay" hidden>
+        <form class="ficha" id="formFicha" novalidate>
+            <div class="ficha__cabecalho">
+                <h2 id="fichaTitulo">Nova ficha</h2>
+                <button type="button" class="ficha__fechar" id="btnFechar" aria-label="Fecha">&times;</button>
+            </div>
+
+            <input type="hidden" id="pessoaId">
+
+            <input type="hidden" id="pessoaId">
+
+            <label class="campo">
+                <span>Nome completo</span>
+                <input type="text" id="nome" required maxlength="120">
+            </label>
+
+            <div class="campo-grupo">
+                <label class="campo">
+                    <span>CPF</span>
+                    <input type="text" id="cpf" required placeholder="000.000.000-00" maxlength="14">
+                </label>
+                <label class="campo">
+                    <span>Data de nascimento</span>
+                    <input type="date" id="data_nascimento">
+                </label>
+            </div>
+
+            <div class="campo-grupo">
+                <label class="campo">
+                    <span>E-mail</span>
+                    <input type="email" id="email" required maxlength="150">
+                </label>
+                <label class="campo">
+                    <span>Telefone</span>
+                    <input type="text" id="telefone" placeholder="(00) 00000-0000" maxlength="20">
+                </label>
+            </div>
+
+            <ul class="ficha__erros" id="fichaErros" hidden></ul>
+
+            <div class="ficha__rodape">
+                <button type="button" class="botao botao--secundario" id="btnCancelar">Cancelar</button>
+                <button type="submit" class="botao botao--primario">Salvar ficha</button>
+            </div>
+        </form>
+    </div>
+    </form>
+    </div>
+
+</body>
+
+</html>
